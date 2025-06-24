@@ -1,0 +1,142 @@
+
+We are going to learn Node.js through out the making a real-world project, so you can understand the concepts better and also you will be able to build your own project using Node.js.
+
+So, make notes regarding the concepts we are going to learn, so you can refer them later when you will be building your own project.
+
+This is the project Intro file:
+
+Project Name: DevTinder
+
+Project Description:
+DevTinder is a platform where developers can meet, connect, and collaborate on projects together. It aims to facilitate networking and project development among developers.
+
+Project Goal:
+The goal of this project is to create a fully functional web application that allows developers to create profiles, connect with other developers, and collaborate on projects. The application will be built using Node.js for the backend and React.js for the frontend.
+
+What we going to build:
+We will make using the microservices architecture, where we will have different services. Each service will be responsible for a specific functionality and will communicate with each other through APIs.
+
+1. Frontend Service (React Js): This service will handle the user interface and user interactions. It will be built using React.js.
+
+2. Backend Service (Node Js): This service will handle the business logic and data processing. It will be built using Node.js and will handle the business logic and data processing.
+
+Requirements (features):
+
+* Create an Account
+* Login
+* Update Profile
+* Feed page: explore other developers profiles
+* Send connection request
+* See Our matches
+* Connection request page where you can see all the connection requests you have sent and received
+
+For now we will start with the above features and later we will add more features like chat, notifications, etc.
+
+What do you mean by High Level Design:
+High Level Design (HLD) is a design phase in software development that focuses on the architecture and structure of the system. It provides an overview of the system's components, their relationships, and how they interact with each other. HLD is typically created after the requirements gathering phase and serves as a blueprint for the detailed design phase.
+
+What do you mean by frontend system architecture:
+Frontend system architecture refers to the structure and organization of the client-side components of a web application. It defines how the user interface is built, how data flows between components, and how the application interacts with backend services. In the context of our project, the frontend architecture will be based on React.js, which allows us to create reusable components and manage the application state effectively.
+
+Give difference between High level design and Low level design & Planning:
+
+High Level Design (HLD):
+
+* Focuses on the overall architecture and structure of the system.
+* Provides a broad overview of the system's components, their relationships, and how they interact.
+* Defines the major modules, their responsibilities, and how they communicate with each other.
+* Does not go into detailed implementation specifics.
+* Serves as a blueprint for the detailed design phase.
+
+Low Level Design (LLD):
+
+* Focuses on the detailed design of individual components and modules.
+* Provides a detailed description of how each component will be implemented, including data structures, algorithms, and interfaces.
+* Defines the internal logic, data flow, and interactions within each component.
+* Includes specific implementation details, such as class diagrams, sequence diagrams, and database schemas.
+* Serves as a guide for developers during the implementation phase.
+
+Planning:
+
+* Involves defining the project scope, objectives, and deliverables.
+* Includes creating a project timeline, resource allocation, and risk management.
+* Focuses on the overall project management aspects rather than the technical design.
+* Planning is typically done before the design phases and helps ensure that the project is executed efficiently and meets its goals.
+
+In our project, we will start with High Level Design (HLD) to outline the architecture and structure of the system, followed by Low Level Design (LLD) to detail the implementation specifics of each component. Planning will be an ongoing process throughout the project to ensure we stay on track and meet our objectives.
+
+Tech Planning:
+
+* Frontend: React.js
+* Backend: Node.js
+* Database: MongoDB (for storing user profiles and connection requests)
+
+LLD:
+
+DB Design (How should I think while designing the database schema, how, what, where to store the data like how to think about the collections, how to design the schema, what fields to include, what are the collections, etc.)
+
+In our project:
+
+Database Design:
+
+User Collection:
+
+* username: User's chosen username
+* email: User's email address
+* password: Hashed password for authentication
+* profilePicture: URL of the user's profile picture
+* bio: Short biography or description of the User
+* age: User's age
+* location: User's location
+* gender: User
+
+Connection Request Collection:
+
+* senderId: User ID of the sender
+* receiverId: User ID of the receiver
+* status: Status of the connection request (e.g., ignored, pending, accepted, rejected)
+
+What do you mean by REST API:
+REST (Representational State Transfer) API is an architectural style for designing networked applications. It is based on a set of principles and constraints that allow developers to create scalable and stateless web services. REST APIs use standard HTTP methods (GET, POST, PUT, DELETE) to perform operations on resources, which are typically represented in JSON or XML format.
+
+Real life example of REST API:
+
+Social Media API:
+
+A social media platform like Twitter provides a REST API that allows developers to interact with its resources, such as tweets, users, and followers.
+
+Developers can use HTTP methods to perform actions like retrieving a user's tweets (GET), posting a new tweet (POST), updating a user's profile (PUT), or deleting a tweet (DELETE).
+
+API Design:
+
+Types of REST API: GET, POST, PUT, DELETE, PATCH
+
+* GET: Retrieve data from the server (e.g., get user profile)
+* POST: Send data to the server to create a new resource (e.g., create a new user)
+* PUT: Update an existing resource on the server (e.g., update user profile)
+* DELETE: Remove a resource from the server (e.g., delete a user account)
+* PATCH: Partially update an existing resource (e.g., update only the user's bio)
+
+What is the main difference between PUT and PATCH:
+
+* PUT: Replaces the entire resource with the new data provided. It is idempotent, meaning multiple identical requests will have the same effect as a single request.
+* PATCH: Applies partial modifications to a resource. It is not necessarily idempotent, meaning multiple identical requests may have different effects depending on the state of the resource.
+
+Explain in detailed the CRUD operations in the API:
+
+API Endpoints:
+
+* Post /signup: Create a new user account
+* Post /login: Authenticate a user and return a token
+* GET /profile: Retrieve the user's profile information
+* PUT /profile: Update the user's profile information
+* Patch /profile: Partially update the user's profile information
+* Post /send-connection-request: Send a connection request to another user or ignore the user
+* Post /review-connection-request: Review the connection request and accept or reject it
+* Get /connection-requests: Retrieve all connection requests sent and received by the user
+* Get /connections: Retrieve all connections of the user
+
+
+// Lets Start to build the porject :
+// We will start with the backend service using Node.js and Express.js
+
