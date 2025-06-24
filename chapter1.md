@@ -36,16 +36,7 @@ The application will be divided into **separate services**, where each service:
 * Has its own codebase and database.
 * Communicates with other services through **HTTP APIs**.
 
-#### **Services to be created:**
 
-| Service Name         | Responsibility                             | Technology              |
-| -------------------- | ------------------------------------------ | ----------------------- |
-| Frontend Service     | UI, navigation, and API communication      | React.js                |
-| User Service         | User authentication, profiles              | Node.js + MongoDB       |
-| Match Service        | Swiping logic, connection suggestions      | Node.js + MongoDB       |
-| Project Service      | Project creation, collaboration handling   | Node.js + MongoDB       |
-| Notification Service | Emails, notifications, reminders           | Node.js + external APIs |
-| API Gateway          | Routes client requests to correct services | Node.js (Express.js)    |
 
 ---
 
