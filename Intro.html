@@ -725,3 +725,95 @@ app.use((err, req, res, next) => {
 - how we can use the error handling middleware in Express.js:
 - also take example of the order of error handling middleware:
   - In Express.js, you can define error handling middleware by providing a function with four parameters: `err`, `req`, `res`, and `next`. This middleware should be defined after all other routes and middleware to catch any errors that occur during request processing. The order of error handling middleware matters; it should be placed after all other route handlers to ensure it can catch errors from those handlers.
+
+
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  // Database , Schema & Models | Mongoose & MongoDB:
+    - what do you mean by database:
+    - what do you mean by schema:
+    - what do you mean by model:
+    - what is the difference between schema and model:
+    - what do you mean by Mongoose:
+    - what is the use of Mongoose:
+    - what is the difference between Mongoose and MongoDB:
+    - how we can use Mongoose in our project:
+    - What is the best way to connect to MongoDB using Mongoose:
+    - what if our server is start but the database is not connected:
+    - how we can handle the database connection error in our project:
+    - explain the below code in detail:
+```javascript
+const express = require("express");
+const app = express();
+const connectDatabase = require("./config/database.js"); // Import the database connection
+
+connectDatabase()
+  .then(() => {
+    console.log("Database connected successfully");
+    app.listen(3000, () => {
+      console.log("Server is running on port 3000");
+    });
+  })
+  .catch((err) => {
+    console.log("Database connection failed", err);
+  });
+```
+function :
+```javascript
+const mongoose = require("mongoose");
+
+const connectDatabase = async () => {
+  await mongoose.connect(MongoDBURL);
+};
+
+module.exports = connectDatabase;
+```
+
+- what do you mean by Schema in Mongoose:
+- how we can create a schema in Mongoose:
+- explain with code and more details:
+- what do you mean by Model in Mongoose:
+- how we can create a model in Mongoose:
+- explain with code and more details:
+```
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+    firstName:{
+        type: String,
+    },
+    lastName:{
+        type: String,
+    },
+    email:{
+        type: String,
+    },
+    password:{
+        type: String,
+    },  
+    age:{
+        type: Number,
+    },
+    gender:{
+        type: String,
+    },
+    
+});
+
+const UserModel = mongoose.model("User", userSchema);
+module.exports = UserModel;
+```
+- what is the purpose of creating a schema in Mongoose:
+- difference between documnets , collections and database in Mongoose:
+  - Documents: In Mongoose, a document is an instance of a model. It represents a single record in a collection and contains data that adheres to the schema defined for that model. Each document corresponds to a row in a database table.
+  - Collections: A collection in Mongoose is a group of documents that share the same schema. It is similar to a table in a relational database. Each collection can contain multiple documents, and all documents within a collection follow the same structure defined by the schema.
+  - Database: A database in Mongoose is the entire storage system that contains multiple collections. It is the highest level of organization and can contain various collections, each with its own set of documents.
+
+  - explain the whole procces in detail how we create a schema and model in Mongoose, then how create a document and save it to the database:
+  - I have not add in my schema the _id and __v fields but still it is created in the document, why?
+  - what do you mean by _id and __v fields in Mongoose:
+  - why they required in Mongoose:
+  - can i passed the _id and __v fields in my schema, if yes then how:
+  - what is the purpose of _id and __v fields in Mongoose:
+  
