@@ -817,3 +817,188 @@ module.exports = UserModel;
   - can i passed the _id and __v fields in my schema, if yes then how:
   - what is the purpose of _id and __v fields in Mongoose:
   
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Diving into the APIs | CURD Operations in MongoDB
+
+- what do you mean by API:
+- what is the purpose of API:
+- what is the difference between API and Web API:
+- what do you mean by Web API:
+- what is the purpose of Web API:   
+- what is the difference between REST API and Web API:
+- what do you mean by REST API:
+- what is the purpose of REST API:
+- what is the difference between REST API and GraphQL API:
+- what do you mean by GraphQL API:
+- what is the purpose of GraphQL API:
+- what is the difference between JSON and JS:
+- what is the use of express.json()
+- how we can get data from the dynamically 
+- what is th purpose of the req.body ? why we need to call the particular body of the request :
+- explain in details about the process of add the user using the below code :
+```javascript
+app.post("/signup", async (req, res) => {
+ 
+    // console.log(req.body)
+
+    const userObject = req.body
+// Create a new user instance
+// and save it to the database
+const user = new User(userObject);
+try {
+  await user.save();
+  res.send("User created successfully");
+} catch (err) {
+  console.error("Error creating user:", err);
+  res.status(500).send("Internal Server Error");
+}
+
+
+
+
+});
+```
+- explain the model.find and model.findOne in details 
+- also give me different between Find and FindOne methods 
+
+- take explain of these codes to explain aal the above things :
+```
+// API to add the user
+app.post("/signup", async (req, res) => {
+  // console.log(req.body)
+
+  const userObject = req.body;
+  // Create a new user instance
+  // and save it to the database
+  const user = new User(userObject);
+  try {
+    await user.save();
+    res.send("User created successfully");
+  } catch (err) {
+    console.error("Error creating user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//API to get the user by email
+app.get("/user", async (req, res) => {
+  const userEmail = req.body.email;
+  try {
+    const users = await User.find({ email: userEmail });
+    if (users.length === 0) {
+      res.status(404).send(" User not Found ");
+    } else {
+      res.send(users);
+    }
+  } catch (err) {
+    console.error("Error fetching user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// API to get all Users
+app.get("/feed", async (req, res) => {
+  try {
+    const users = await User.find({});
+    if (!users) {
+      res.status(404).send(" User not Found ");
+    } else {
+      res.send(users);
+    }
+  } catch (error) {
+    console.error("Error fetching user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+```
+
+- If we use Model.findOne method with duplicate elements, it will always return the first document that matches the query according to the natural order of documents in the collection (typically the order in which they were inserted), unless an index is used that affects the order.
+- Also explain most usefull method/filters which i have to use in regular porpose 
+- Explain the CURD opertaion using this example also give me which are the best practice
+```javascript
+// API to add the user
+app.post("/signup", async (req, res) => {
+  // console.log(req.body)
+
+  const userObject = req.body;
+  // Create a new user instance
+  // and save it to the database
+  const user = new User(userObject);
+  try {
+    await user.save();
+    res.send("User created successfully");
+  } catch (err) {
+    console.error("Error creating user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//API to get the user by email
+app.get("/user", async (req, res) => {
+  const userEmail = req.body.email;
+  try {
+    const users = await User.find({ email: userEmail });
+    if (users.length === 0) {
+      res.status(404).send(" User not Found ");
+    } else {
+      res.send(users);
+    }
+  } catch (err) {
+    console.error("Error fetching user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// API to get all Users
+app.get("/feed", async (req, res) => {
+  try {
+    const users = await User.find({});
+    if (!users) {
+      res.status(404).send(" User not Found ");
+    } else {
+      res.send(users);
+    }
+  } catch (error) {
+    console.error("Error fetching user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// DELETE API
+app.delete("/user", async (req,res)=>{
+    const userId = req.body.userId;
+    try{
+         const user = await User.findByIdAndDelete(userId)
+         res.send("User delete Successfully !!! ")
+        //  const user = await User.findByIdAndDelete({_id:userId}) //You can also use this to delete the document by id 
+    }catch (error) {
+    console.error("Error fetching user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+// UPDATE API
+app.patch("/user", async(req,res)=>{
+    const userId = req.body.userId;
+    const data = req.body;
+    try{
+        await User.findByIdAndUpdate({_id:userId},data)
+        res.send("User Updated Successfully!");
+    }catch (error) {
+    console.error("Error fetching user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+
+```
+- explain the difference between the Patch and Put http method 
+- explain the differnce between findOneUpdate and findByIdAndUpdate
+- what are the most used options in Patch or update method explain thme using the syntax                     
